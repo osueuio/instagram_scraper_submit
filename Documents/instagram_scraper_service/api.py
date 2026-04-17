@@ -27,15 +27,16 @@ def load_target_users(csv_path: str) -> list:
     
     df = pd.read_csv(csv_path)
     
-    # 适配可能的列名变体
     column_mapping = {
-        '用户ID': 'identifier',
-        '用户名': 'identifier',
-        '用户名': 'identifier',
-        'username': 'identifier',
-        'user_id': 'identifier',
-        'User ID': 'identifier',
+        # 第一列：ID 映射到 identifier
         'id': 'identifier',
+        'user_id': 'identifier',
+        '用户ID': 'identifier',
+        'User ID': 'identifier',
+        
+        # 第二列：username 映射到 full_name
+        'username': 'full_name',
+        '用户名': 'full_name',
         '用户全名': 'full_name',
         'full_name': 'full_name',
         'Full Name': 'full_name',
